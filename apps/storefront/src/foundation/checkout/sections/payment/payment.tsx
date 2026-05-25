@@ -214,7 +214,7 @@ export const Payment = ({
         ? !hasDefaultBillingAddressInCurrentChannel
         : false,
       saveAddressForFutureUse,
-      saveForFutureUse: !!user,
+      saveForFutureUse: false,
       paymentMethod: isMarketplacePayment
         ? undefined
         : (paymentGatewayMethods.find(({ isDefault }) => isDefault)?.id ??
