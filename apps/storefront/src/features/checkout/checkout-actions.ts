@@ -3,7 +3,6 @@ import { getLocale } from "next-intl/server";
 
 import { type Checkout } from "@nimara/domain/objects/Checkout";
 import { redirect } from "@nimara/i18n/routing";
-import { type FetchOptions } from "@nimara/infrastructure/graphql/client";
 
 import {
   MARKETPLACE_DEFAULT_VENDOR_DISPLAY_NAME,
@@ -28,6 +27,7 @@ import { getServiceRegistry } from "@/services/registry";
  */
 export const getCheckoutOrRedirect = async (
   options?: FetchOptions,
+  redirectOnError = false,
 ): Promise<Checkout> | never => {
   const checkoutId = await getCheckoutId();
   const [locale, region] = await Promise.all([getLocale(), getCurrentRegion()]);
@@ -46,8 +46,12 @@ export const getCheckoutOrRedirect = async (
   });
 
   if (!resultCheckout.ok) {
-    await deleteCheckoutIdCookie();
-    redirect({ href: paths.cart.asPath(), locale });
+    const redirectValue = redirectOnError ? "true" : "false";
+
+    redirect({
+      href: `/api/checkout/clear?redirect=${redirectValue}`,
+      locale,
+    });
   }
 
   await validateCheckoutLinesAction({
