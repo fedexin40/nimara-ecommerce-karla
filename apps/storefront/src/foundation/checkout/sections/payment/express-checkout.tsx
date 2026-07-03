@@ -44,6 +44,7 @@ type ExpressCheckoutProps = {
   amount: number;
   checkoutId: string;
   currency: string;
+  discount: number;
   isDark?: boolean;
   paymentGatewayCustomer?: string | null;
   storeUrl: string | undefined;
@@ -101,6 +102,7 @@ function getPaymentIntentIdFromClientSecret(clientSecret: string) {
 export function ExpressCheckout({
   checkoutId,
   amount,
+  discount,
   currency,
   paymentGatewayCustomer,
   isDark = false,
@@ -120,7 +122,7 @@ export function ExpressCheckout({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const stripeAmount = Math.round(amount * 100);
+    const stripeAmount = Math.round(amount * 100) - Math.round(discount * 100);
 
     const intentKey = JSON.stringify({
       checkoutId,
@@ -528,7 +530,7 @@ export function ExpressCheckout({
 
       unmount?.();
     };
-  }, [checkoutId, amount, currency]);
+  }, [checkoutId, amount, currency, discount]);
 
   return (
     <div className="space-y-4">

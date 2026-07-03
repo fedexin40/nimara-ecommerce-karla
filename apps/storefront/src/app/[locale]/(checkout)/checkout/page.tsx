@@ -67,7 +67,7 @@ export default async function Page(props: PageProps) {
     props.searchParams,
     isMarketplaceEnabled
       ? getMarketplaceCheckoutsOrRedirect()
-      : getCheckoutOrRedirect(),
+      : getCheckoutOrRedirect({ cache: "no-store" }),
     getAccessToken(),
     getServiceRegistry(),
     getStoreUrl(),
@@ -178,8 +178,9 @@ export default async function Page(props: PageProps) {
         <CardContent>
           <ExpressCheckout
             checkoutId={primaryCheckout.id}
-            amount={primaryCheckout.totalPrice.gross.amount}
-            currency={primaryCheckout.totalPrice.gross.currency}
+            amount={primaryCheckout.subtotalPrice.gross.amount}
+            discount={primaryCheckout.discount?.amount ?? 0}
+            currency={primaryCheckout.subtotalPrice.gross.currency}
             storeUrl={storeUrl}
           />
         </CardContent>
