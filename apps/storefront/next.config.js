@@ -82,7 +82,10 @@ const nextConfig = withAnalyzer(
           hostname: "cdn.buttercms.com",
         },
         {
-          hostname: "*proyecto705.com.mx",
+          hostname: "*karskarlas.com.mx",
+        },
+        {
+          hostname: "*karlkarlas.com.mx",
         },
         {
           hostname: "localhost",

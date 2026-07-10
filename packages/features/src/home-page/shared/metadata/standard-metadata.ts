@@ -29,7 +29,7 @@ export async function generateStandardHomeMetadata({
         },
       ],
       url: canonicalUrl,
-      siteName: "Proyecto 705 Store",
+      siteName: "Karl Karlas Store",
     },
   };
 }
