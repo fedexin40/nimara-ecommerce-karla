@@ -13,7 +13,7 @@ export const LOCALE_CHANNEL_MAP = {
 export const SUPPORTED_CURRENCIES = ["USD", "GBP"] as const;
 
 export const SUPPORTED_CHANNELS = [
-  "proyecto705",
+  "karlkarlas",
   "default-channel",
   "channel-us",
   "channel-uk",
@@ -50,7 +50,7 @@ export const MARKETS = {
   MX: {
     id: "mx",
     name: "México",
-    channel: "proyecto705",
+    channel: "karlkarlas",
     currency: "MXN",
     continent: "North America",
     countryCode: "MX",

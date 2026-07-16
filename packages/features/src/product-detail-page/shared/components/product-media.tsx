@@ -163,18 +163,19 @@ const MobileOnlyCarousel = (props: {
       <CarouselContent>
         {props.images?.map(({ url, alt }, i) => (
           <CarouselItem key={url}>
-            <div className="relative aspect-square w-full">
+            <div className="relative">
               {props.discountPercent > 0 && (
                 <DiscountBadge discount={props.discountPercent} />
               )}
               <NextImage
                 src={url}
                 alt={alt || props.altTextFallback || ""}
+                width={250}
+                height={250}
                 priority={i === 0}
                 loading={i === 0 ? "eager" : "lazy"}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 960px) 100vw, 1vw"
+                className="h-full w-full object-cover"
               />
             </div>
           </CarouselItem>
