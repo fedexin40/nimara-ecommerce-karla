@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 
 import { LocalizedLink } from "@nimara/i18n/routing";
 
-import logo from "@/assets/logo-full.png";
+import logo from "@/assets/logo_grande_blanco.png";
+import logo_negro from "@/assets/logo_grande_negro.png";
 import { CACHE_TTL } from "@/config";
 import { clientEnvs } from "@/envs/client";
 import { CookieSettingsTrigger } from "@/foundation/cookie-consent";
@@ -69,13 +70,24 @@ export const Footer = async () => {
                   href={paths.home.asPath()}
                   title={t("common.go-to-homepage")}
                 >
-                  <Image
-                    src={logo}
-                    alt="Logo"
-                    width={160}
-                    height={40}
-                    className="h-full w-full object-cover dark:invert"
-                  />
+                  <span className="hidden dark:block">
+                    <Image
+                      src={logo}
+                      alt="Logo"
+                      width={160}
+                      height={40}
+                      className="h-full w-full object-cover"
+                    />
+                  </span>
+                  <span className="dark:hidden">
+                    <Image
+                      src={logo_negro}
+                      alt="Logo"
+                      width={160}
+                      height={40}
+                      className="h-full w-full object-cover"
+                    />
+                  </span>
                 </LocalizedLink>
               </div>
             </div>
